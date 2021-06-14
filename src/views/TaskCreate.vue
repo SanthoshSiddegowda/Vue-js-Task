@@ -2,28 +2,27 @@
   <div class="home">
   <h2>Task Form {{task_name}}</h2>
     <div class="form">
-        <form @submit="addTask">
+        <form v-on:submit.prevent>
           <label>Task Name</label>
             <input type="text" v-model="task_name">
           <label>Assigned To</label>
             <select v-model="assigned_to">
-                <option value="0">Leyonal</option>
-                <option value="1">Rajesh</option>
-                <option value="2">Karthick</option>
-                <option value="3">Felix</option>
+                <option value="Leyonal">Leyonal</option>
+                <option value="Rajesh">Rajesh</option>
+                <option value="Karthick">Karthick</option>
+                <option value="Felix">Felix</option>
             </select>
           <label>Status</label>
             <select v-model="status">
-                <option value="0">ToDo</option>
-                <option value="1">Open</option>
-                <option value="2">In Progress</option>
-                <option value="3">Closed</option>
+                <option value="ToDo">ToDo</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Closed">Closed</option>
             </select>
           <label>Description</label>
             <textarea type="text" style="height: 70px" v-model="desc"></textarea>
 
-            <button type="Submit">Submit</button>
-            <p>{{task_name}}</p>
+            <button @click="addTask">Submit</button>
         </form>
     </div>
   </div>
@@ -42,7 +41,13 @@ export default {
 
     methods: {
         addTask(){
-
+          this.$store.commit('addTask', {
+            'name' : this.task_name,
+            'assigned_to' : this.assigned_to,
+            'status' : this.status,
+            'desc' :this.desc
+          })
+          this.$router.push('/') 
         }
     }
   

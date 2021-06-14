@@ -11,7 +11,7 @@
           <th>Description</th>
           <th>Action</th>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>TA001</td>
           <td>UI Development</td>
           <td>Leyonal</td>
@@ -42,6 +42,15 @@
           <td>Open</td>
           <td>This is actually the "official" solution to this kind of problem. Returning false MIGHT also work, but the type button will never fail.</td>
           <td><v-icon class="icon-space" color="green">mdi-pencil</v-icon><v-icon class="icon-space" color="red">mdi-delete</v-icon></td>
+        </tr> -->
+
+        <tr v-for="(item,index) in $store.state.list" :key="index">
+          <td>TA{{index+1}}</td>
+          <td>{{item.assigned_to}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.desc}}</td>
+          <td><v-icon class="icon-space" color="green">mdi-pencil</v-icon><v-icon class="icon-space" color="red">mdi-delete</v-icon></td>
         </tr>
       </table>
     </div>
@@ -50,7 +59,9 @@
 
 <script>
 export default {
-  
+   created() {
+     
+   }
 }
 </script>
 
