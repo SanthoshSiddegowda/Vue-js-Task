@@ -33,12 +33,10 @@
 export default {
     data() {
         return{
-            tasks: {
-                task_name: "",
-                assigned_to: "",
-                status: "",
-                desc: "",
-            }
+            task_name: "",
+            assigned_to: "",
+            status: "",
+            desc: "",
         }   
     },
 
